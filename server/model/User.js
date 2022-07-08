@@ -4,7 +4,6 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
 const userSchema = new Schema({
-  id: Schema.Types.ObjectId,
   name: {
     type: String,
     required: true

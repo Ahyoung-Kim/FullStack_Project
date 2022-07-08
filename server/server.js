@@ -3,7 +3,10 @@ const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser')
 const PORT = 4000;
-import { DBURI } from './config/key';
+const DBURI = `mongodb+srv://ahyoung:dkdud0827@my-proj.bovzy5o.mongodb.net/?retryWrites=true&w=majority`
+
+// routes
+const userRouter = require('./routes/user')
 
 // Model
 const User = require('./model/User');
@@ -36,25 +39,7 @@ app.get('/', (req, res) => {
   res.send({ success: true })
 })
 
-// User 등록
-app.post('/register', (req, res) => {
-  const user = new User();
-  const { name, email, password } = req.body;
-
-  user.name = name;
-  user.email = email;
-  user.password = password;
-
-  user.save((err) => {
-    if(err){
-      return res.status(400).send(err);
-    } else {
-      return res.status(201).send({
-        success: true
-      })
-    }
-  })
-})
+app.use('/user', userRouter)
 
 app.listen(PORT, () => {
   console.log(`Server is running on ${PORT}`)
