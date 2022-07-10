@@ -3,7 +3,7 @@ const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser')
 const PORT = 4000;
-const DBURI = `mongodb+srv://ahyoung:dkdud0827@my-proj.bovzy5o.mongodb.net/?retryWrites=true&w=majority`
+import { DBURI } from './config/key'
 
 // routes
 const userRouter = require('./routes/user')
