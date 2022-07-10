@@ -32,6 +32,7 @@ const userSchema = new Schema({
   }]
 })
 
+
 // 회원가입 시 비밀번호 암호화
 // .pre()를 통해 해당 스키마에 데이터가 저장(.save)되기 전 수행할 작업들
 userSchema.pre('save', function(next) {

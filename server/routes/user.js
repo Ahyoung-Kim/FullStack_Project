@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../model/User');
 
+// 유저 로그인
 router.post('/login', async(req, res) => {
   const user = await User.findOne({ email : req.body.email })
   if(!user) {
@@ -25,6 +26,7 @@ router.post('/login', async(req, res) => {
   })
 })
 
+// 유저 회원가입
 router.post('/register', async(req, res, next) => {
   const checkUser = await User.findOne({ email: req.body.email });
 
